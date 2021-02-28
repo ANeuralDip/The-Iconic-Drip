@@ -1,14 +1,57 @@
 # Group Project - Online Supermarket
  Group 12's repository
  
-## TODO:
-- [ ] Create Front-end
-  - [ ] Create components
-  - [ ] Add CSS
-  - [ ] Add the React Router routes
-- [ ] Create Back-end
-  - [ ] Create the server
-  - [ ] Add database integrations 
+## Core components (Due on week 4):
+ - [ ] View products
+ - [ ] Compare products
+ - [ ] Add product to basket
+ 
+## Sprint backlog:
+| Week | Name | Task | Completion date| Difficulty | Completed? |
+| --- | --- | --- | --- | --- | --- |
+| **_Week 3:_** | | | **_5 March_** |
+| | Paul | Create website scaffold + products list |  | :star: :star: :star: |
+| | Priya | Finish ER diagram and start implementing the database | | :star: :star: :star: |
+| | Nauman | Create basket component and prototype navbar | | :star: :star: |
+| **_Week 4:_** | | | **_12 March_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 5:_** | | | **_19 March_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 6:_** | | | **_26 March_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 7:_** | | | **_2 April_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 8:_** | | | **_9 April_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 9:_** | | | **_16 April_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 10:_** | | | **_23 April_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 11:_** | | | **_30 April_** |
+| | Paul |  |  | |
+| | Priya | | | |
+| | Nauman | | | |
+| **_Week 12:_** | | | **_7 May_** |
+| | Paul |  |  |  |
+| | Priya |  | |  |
+| | Nauman |  | |  |
+
+
+
   
 ## Functions:
 - [ ] Customer can Register and make an account 
