@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'good times';
+    src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
+}
+
+h1 {
+    text-align: center;
+    font-family: "good times";
+}
+
+.card-title{
+    font-family: "good times";
+    font-size: 25px;
+    color: aqua;
+}
+
+.card-title:hover{
+    text-decoration: none;
+    color: darkblue;
+}
+
+.price{
+    font-size: 20px !important;
+    
+}
+
+#image{
+    height: 240px;
+    width: 180px;
+}
+
+#card{
+    display: flex !important;
+    flex: 1 1 auto;
+    height: 100%;
+    width: min-content;
+    border: 2px solid aqua !important;
+    font-family: "good times";
+    background-color: #343a40 !important;
+    color: white !important;
+}
+
+.card-body{
+    border-top: 3px solid black !important;
+}
+
+#button{
+    font-family: "good times";
+    font-weight: lighter;
+    border: 2px solid aqua;
+    background: #343a40 !important;
+    color: aqua;
+}
+
+#button:hover{
+    
+    font-weight: bold;
+    border: 2px solid #343a40;
+    background: aqua !important;
+    color: #343a40;
+}

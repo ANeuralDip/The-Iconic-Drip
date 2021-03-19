@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'good times';
+    src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
+}
+
+
+#sort-button{
+    font-family: "good times" !important;
+    background: aqua!important;
+    color: #343a40;
+    border: 2px solid #343a40 ;
+    position: absolute;
+    right: 3%;
+}
+
+#sort-button::after{
+    display: none;
+}
+
+#sort-button:focus{
+    box-shadow: none !important;
+}
+
+#sort-button:hover{
+    color: aqua !important;
+    background-color: #343a40 !important;
+    border-color: aqua;
+}  
+
+div.card-deck{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
