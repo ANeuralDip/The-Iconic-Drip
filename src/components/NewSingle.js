@@ -9,12 +9,14 @@ function ItemCard({item}){
 
     
     function addToBasket(){
-
+        
+        window.alert("Item "+ item.name + " added to basket")
         axios.post(`http://localhost:REDACTED/basket`, item)
         .then( (response) => {
         // handle success
         // var resData = response.data.data;
-        console.log("New single response", response.data)
+        
+        console.log("Item added to cart", response.data)
     });
     }
     return(
@@ -23,14 +25,14 @@ function ItemCard({item}){
         <Card id="card" bg="light" text="dark" border="dark" >
             <Link  to={`/items/${item.name}`}><Card.Img id="image" src={`http://localhost:REDACTED/${item.itemId}.png`} />
             </Link>
-            <Card.Body className="card-body">
+            <Card.Body id="card-body">
             <Card.Title as={Link} to={`/items/${item.name}`}>{item.name}</Card.Title>
                     <Card.Text>
                     {item.description} <br/>
                     </Card.Text>
                     <Card.Text className="price">£{item.price}</Card.Text>
             </Card.Body>
-                <Button id="button" onClick={() => addToBasket()}>Add to basket</Button>
+                <Button id="basket-button" onClick={() => addToBasket()}>Add to basket</Button>
         </Card>   
     </div>
 );

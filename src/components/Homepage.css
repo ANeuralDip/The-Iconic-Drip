@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'good times';
+  src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
+}
+
+.carousel {
+    width:1200px;
+    height:auto;
+    margin: auto;
+    border: 3px solid aqua;
+  }
+
+#card-image{
+    width:1200px;
+    height:500px;
+    margin: auto;
+}
+
+#modal{
+  font-family: 'good times' !important;
+  font-size: 25px !important;
+}
+
+#modal-title{
+  font-size: 30px !important;
+  font-family: 'good times' !important;
+  color: darkblue;
+}

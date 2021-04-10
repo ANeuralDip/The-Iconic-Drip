@@ -25,8 +25,8 @@ h1 {
 }
 
 #image{
-    height: 240px;
-    width: 180px;
+    height: 600px;
+    width: 400px;
 }
 
 #card{
@@ -40,22 +40,25 @@ h1 {
     color: white !important;
 }
 
-.card-body{
+#card-body{
     border-top: 3px solid black !important;
 }
 
-#button{
+#basket-button{
     font-family: "good times";
     font-weight: lighter;
-    border: 2px solid aqua;
-    background: #343a40 !important;
-    color: aqua;
+    border: 3px solid white;
+    background: #343a40!important;
+    color: aqua !important;
 }
 
-#button:hover{
+#basket-button:hover{
     
     font-weight: bold;
-    border: 2px solid #343a40;
     background: aqua !important;
-    color: #343a40;
+    color: #343a40 !important;
+}
+
+#basket-button:focus{
+    box-shadow: none;
 }

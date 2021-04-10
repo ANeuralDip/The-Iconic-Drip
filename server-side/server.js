@@ -8,6 +8,13 @@ var app = express();
 app.use(express.static('public'))//used for getting the items' pictures
 app.use(cors());//enables cross-origin resource sharing
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+
 // Server port
 var HTTP_PORT = REDACTED
 
@@ -44,13 +51,13 @@ app.get("/items", (req, res, next) => {
 //create a route to the basket
 app.route("/basket")
     .post((req, res, next) => {
-    
+
         var data = {
             id : req.body.itemId,
-            price: req.body.price
         }
-        var sql = 'INSERT INTO cart(itemId, price) VALUES (?, ?)'
-        var params = [data.id, data.price]
+        
+        var sql = 'INSERT INTO cart(itemId) VALUES ( ?)'
+        var params = [data.id]
         db.run(sql, params, function (err, result) {
             if (err) {
                 res.status(400).json({
@@ -63,7 +70,7 @@ app.route("/basket")
     })
     .get((req, res, next) => {
 
-        let sql = `SELECT itemId, price from cart`;
+        let sql = `SELECT *, item.itemId from item, cart WHERE item.itemId = cart.itemId`;
         var params = []
         db.all(sql, params, (err, rows) => {
             if (err) {
@@ -72,12 +79,29 @@ app.route("/basket")
                 });
                 return;
             }
+            console.log(rows)
             res.json(
                 rows
             )
         });
     })
 
+app.delete("/basket:id", (req, res, next) =>{
+
+    let sql = "DELETE FROM cart WHERE itemId = ?"
+    var params = [req.params.id]
+        
+    db.run(sql, params, (err, rows) => {
+        if (err) {
+            res.status(400).json({
+                    "error": err.message
+            })
+        return;
+        }
+        console.log("item deleted")
+        res.send("item "+ req.body.itemId + " deleted")
+    })
+})
 
 //search item by name
 app.get("/search/:name" , (req, res, next) => {

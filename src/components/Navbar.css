@@ -3,14 +3,7 @@
     src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
   }
 
-.title{
-    font-family: "good times";
-    font-size: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-img{
+#logo{
     height: 80px;
     width: 80px;
 }
@@ -32,18 +25,6 @@ a.nav-item.dropdown:hover{
     text-decoration: none !important;
 }
 
-
-a.dropdown-title{
-    font-family: "good times";
-    color:white;    
-    font-size: 15px;
-}
-
-a.dropdown-title:hover{
-    color: aqua;    
-    text-decoration: none;
-}
-
 a#basic-nav-dropdown.dropdown-toggle.nav-link::after{
     display: none;
 }
@@ -54,56 +35,46 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after{
     right: 0;
 }
 
-form.form-inline{
+#search-bar{
     position: relative;
     left: 105%;
     margin-top: 2%;
 }
 
-input.mr-sm-2.form-control{
+#search-input{
     font-family: "good times";
-    font-size: 15px;
+    font-size: 20px;
     width: 25%;
     box-shadow: none;
     border: 2px solid #343a40;
     border-radius: 100px;
 }
 
-input.mr-sm-2.form-control:focus{
+#search-input:focus{
     border-color: aqua;
     color: #343a40;
 }
 
-button.btn.btn-outline-dark{
-
+#search-button{
+    font-size: 20px;
+    color: aqua;
     margin-right: 60px;
-    border: 2px solid aqua;
+    border: 3px solid aqua;
     border-radius: 10px;
     margin-left: -5px;
-    border-color: #343a40;
-    background-color: aqua;
-}
-
-button.btn.btn-outline-dark:hover{
     border-color: aqua;
     background-color: #343a40;
-    color: aqua;
 }
 
-button.btn.btn-outline-dark:focus{
+#search-button:hover{
+    border-color: #343a40;
+    background-color: aqua;
+    color: #343a40;
+}
+
+#search-button:focus{
     box-shadow: none;
 }
-
-div.dropdown-menu.show {
-    text-align: center;
-    border: 2px solid aqua;
-    background-color: #343a40;
-  }
-
-a.dropdown-item {
-    font-family: "good times";
-    color: #ffffff;
-  }
 
 div.dropdown-menu.show{
     text-align: center;
@@ -112,15 +83,12 @@ div.dropdown-menu.show{
   
 }
 
+
 div.nav-item.dropdown::after{
     display: none;
   
 }
 
-a.dropdown-item:hover{
-    color: aqua;
-    background-color: #343a40 !important;
-}
 
 #account::after{
     display: none;

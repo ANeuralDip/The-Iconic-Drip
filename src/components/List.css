@@ -6,15 +6,17 @@
 
 #sort-button{
     font-family: "good times" !important;
-    background: aqua!important;
-    color: #343a40;
-    border: 2px solid #343a40 ;
-    position: absolute;
-    right: 3%;
+    font-size: 20px;
+    background: #343a40 !important;
+    color: aqua;
+    border: 3px solid aqua ;
+    position: relative;
+    left: 89%;
 }
 
 #sort-button::after{
     display: none;
+    padding: 0px 0px !important;
 }
 
 #sort-button:focus{
@@ -22,13 +24,26 @@
 }
 
 #sort-button:hover{
-    color: aqua !important;
-    background-color: #343a40 !important;
-    border-color: aqua;
+    color: #343a40 !important;
+    background-color: aqua !important;
+    border-color: #343a40;
 }  
+
 
 div.card-deck{
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+#sort-option {
+    font-family: "good times" !important;
+    font-size: 20px;
+    background: #343a40 !important;
+    color: aqua;
+}
+
+#sort-option:hover{
+    color: #343a40 !important;
+    background-color: aqua !important;
 }

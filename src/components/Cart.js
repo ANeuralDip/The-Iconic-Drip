@@ -7,6 +7,8 @@ function Cart(){
 
 
     const [cart, setCart] = useState([])
+    let prices = cart.map(({ price }) => price)
+    let total = prices.reduce((a,b) => a + b, 0)
 
     useEffect(()=>{
         
@@ -29,10 +31,13 @@ function Cart(){
 
     return(
         <div>
+            {console.log('FROM CART', total)}
             <h1>Cart:</h1>
                 <CardDeck >
                 {renderItems()}
                 </CardDeck>
+                <br/>
+                <h2 id="total">Total: {total}</h2>
         </div>
     )
 }

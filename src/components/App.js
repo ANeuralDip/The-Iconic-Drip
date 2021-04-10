@@ -1,18 +1,16 @@
 import { BrowserRouter } from 'react-router-dom';
 import NavigationWithRouter from './Navbar';
-import Mens from './Mens';
-import List from "./List";
-import Homepage from './Homepage';
-import SignUp from './SignUp';
-import Cart from './Cart';
+import {Modal, Button, Form} from 'react-bootstrap';
+import {useState} from 'react';
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
         <NavigationWithRouter/>
       </BrowserRouter>
-    </div>
+      </div>
   );
 }
 

@@ -36,7 +36,7 @@ let db = new sqlite3.Database('item.db', (err) => {
     }
   });
 
-  const cart = 'CREATE TABLE IF NOT EXISTS cart(itemId INT PRIMARY KEY, price FLOAT)';
+  const cart = 'CREATE TABLE IF NOT EXISTS cart(itemId INT PRIMARY KEY, quantity INT)';
   db.run(cart, (err) => {
     if (err) {
          // Table already created

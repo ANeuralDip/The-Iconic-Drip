@@ -1,30 +1,48 @@
 import React from 'react';
-
+import {Form, Button, ButtonGroup} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import "./Signup.css";
 
 function SignUp(){
-      return (
-  
-        <form>
-          <div className="formContainer">
-            <h2>SignUp Form</h2>
-            <hr />
-            <label htmlFor="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter your email" name="email" required />
-            <label htmlFor="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter your password" name="password" required />
-            <label htmlFor="renterPassword"><b>Renter your password</b></label>
-            <input type="password" placeholder="Renter Password" name="repeatPassword" required />
-            <label>
-              <input type="checkbox" defaultChecked="checked" name="remember" style={{marginbottom: '16px'}} /> Remember me
-            </label>
-            <p>By creating an account you agree to our <a href="#" style={{color: 'dodgerblue'}}>Terms &amp; Privacy</a></p><p> 
-            </p><div>
-              <button type="button" className="cancel">Cancel</button>
-              <button type="submit" className="signup">SignUp</button>
-              <a href="login.html"><button type="button" className="alreadyhaveanaccount">Already have an account "LOGIN" 
-                </button></a>
-            </div>
-          </div></form>
+
+    return (
+	<div>
+		<h1>Sign Up:</h1>
+		<Form className="signup-form">
+
+  			<Form.Group controlId="formBasicEmail">
+    			<Form.Label>Email address</Form.Label>
+    			<Form.Control id="form-input" type="email" placeholder="Enter email" />
+    			<Form.Text className="text-muted">
+    			We'll never share your email with anyone else.
+    			</Form.Text>
+  			</Form.Group>
+
+  			<Form.Group controlId="formBasicPassword">
+    			<Form.Label>Password</Form.Label>
+    			<Form.Control id="form-input" type="password" placeholder="Password" />
+  			</Form.Group>
+
+  			<Form.Group controlId="formBasicPassword">
+    			<Form.Label>Re-enter Password</Form.Label>
+    			<Form.Control id="form-input" type="password" placeholder="Password" />
+  			</Form.Group>
+
+  			<Form.Group controlId="formBasicCheckbox">
+    			<Form.Check type="checkbox" label="Subscribe to newsletter" />
+				<Form.Check type="checkbox" label="Remember me" />
+				<Form.Text>By creating an account you agree to our Terms & Privacy</Form.Text>
+  			</Form.Group>
+
+  	<ButtonGroup>
+  		<Button id="search-button" type="submit">Clear details</Button>
+		<Button id="search-button" type="submit">Sign Up</Button>
+  	</ButtonGroup>
+
+	<Form.Text>Already have an account?</Form.Text>
+	<Button id="search-button" as={Link} to="/login">Log in</Button>
+</Form></div>
+
       );
     }
 
