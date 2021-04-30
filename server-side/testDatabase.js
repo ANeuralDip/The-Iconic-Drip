@@ -46,6 +46,20 @@ let db = new sqlite3.Database('item.db', (err) => {
       console.log("Creating table cart")
   });
 
-  
+  const account ='CREATE TABLE IF NOT EXISTS account(email TEXT PRIMARY KEY, password TEXT)';
+  db.run(account, (err) => {
+    if (err) {
+        // Table already created
+        console.log('Table already created.');
+        throw(err);
+    }else{
+     
+      // First time Table created, insert some rows
+      console.log('First time Table created, creating some rows.');
+      
+      var insert = 'REPLACE INTO account( email, password) VALUES (?, ?)';
+      db.run(insert, ['admin', "admin"]);
+    }
+  });
 
 module.exports = db;

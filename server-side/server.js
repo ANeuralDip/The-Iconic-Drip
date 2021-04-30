@@ -47,6 +47,23 @@ app.get("/items", (req, res, next) => {
     });
 });
 
+app.get("/items/:id" , (req, res, next) => {
+
+    var sql = 'SELECT * FROM item WHERE itemId = ?';
+    var params = [req.params.id]
+    console.log("items id: ", params)
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({
+                "error": err.message
+            });
+            return;
+        }
+        res.json(
+            row
+        )
+    });
+})
 
 //create a route to the basket
 app.route("/basket")
@@ -54,10 +71,11 @@ app.route("/basket")
 
         var data = {
             id : req.body.itemId,
+            quantity: req.body.quantity
         }
         
-        var sql = 'INSERT INTO cart(itemId) VALUES ( ?)'
-        var params = [data.id]
+        var sql = 'INSERT INTO cart(itemId, quantity) VALUES ( ?, ?)'
+        var params = [data.id, data.quantity]
         db.run(sql, params, function (err, result) {
             if (err) {
                 res.status(400).json({
@@ -68,9 +86,10 @@ app.route("/basket")
             res.json(data)
         })
     })
+    
     .get((req, res, next) => {
 
-        let sql = `SELECT *, item.itemId from item, cart WHERE item.itemId = cart.itemId`;
+        let sql = `SELECT *, cart.quantity, item.itemId, cart.itemId from item, cart WHERE item.itemId = cart.itemId`;
         var params = []
         db.all(sql, params, (err, rows) => {
             if (err) {
@@ -86,11 +105,15 @@ app.route("/basket")
         });
     })
 
-app.delete("/basket:id", (req, res, next) =>{
+app.route("/basket/:id")
 
+    .delete((req, res, next) =>{
+    
+    
     let sql = "DELETE FROM cart WHERE itemId = ?"
     var params = [req.params.id]
-        
+    
+    console.log(req.params.id)
     db.run(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({
@@ -100,8 +123,8 @@ app.delete("/basket:id", (req, res, next) =>{
         }
         console.log("item deleted")
         res.send("item "+ req.body.itemId + " deleted")
+        })
     })
-})
 
 //search item by name
 app.get("/search/:name" , (req, res, next) => {

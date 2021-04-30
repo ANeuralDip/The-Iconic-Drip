@@ -13,13 +13,20 @@
     color:white !important;
     font-size: 20px;
     font-weight: 500;
+    
 }
 
 a.nav-link:hover{
     color: aqua !important;
 }
 
+.active{
+    color: aqua !important;
+}
 
+.nav-item.dropdown{
+    align-content: right;
+}
 
 a.nav-item.dropdown:hover{
     text-decoration: none !important;
@@ -32,12 +39,27 @@ a#basic-nav-dropdown.dropdown-toggle.nav-link::after{
 .client-side{
     position: absolute;
     display: flex;
-    right: 0;
+    right: 30px;
+}
+
+.text-button{
+    font-family: "good times";
+    color:white !important;
+    font-size: 20px;
+    font-weight: 500;
+    background:none;
+border:none;
+margin:0;
+padding:0;
+}
+
+.text-button:hover{
+    color: aqua !important;
 }
 
 #search-bar{
     position: relative;
-    left: 105%;
+    left: 950px;
     margin-top: 2%;
 }
 
