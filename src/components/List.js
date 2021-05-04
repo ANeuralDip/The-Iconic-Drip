@@ -69,13 +69,16 @@ function List(props){
 }
 
 		return(
-				<>
-				<Filter />
+			<>
+				<div style={{display: 'flex'}}>
 				<SortButton />
+				<Filter />
+				
+				</div>	
 					<>{/* creating a list of the previous item cards */}
-								<CardDeck>{renderItems()}</CardDeck>
+						<CardDeck>{renderItems()}</CardDeck>
 					</>
-				</>
+			</>
 		);
 
 }

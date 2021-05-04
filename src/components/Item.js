@@ -1,61 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {
-    useParams,
-    Switch,
-    Route
-} from 'react-router-dom';
-import Mens from './Mens';
-import Womens from './Womens';
-import {Col, Card, Row, Button} from 'react-bootstrap';
-// import Accesories from './Accesories';
-// import Deals from './Deals';
-import SearchResults from './SearchResults';
-import Homepage from './Homepage';
-import Cart from './Cart';
-import Profile from './profile';
-import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 import StarRatings from 'react-star-ratings';
-import ProtectedRoute from "../auth/protected-route";
-import Lost from './Lost';
-function Routes(props){
+import axios from 'axios'
+import {Col, Row, Button, Card} from 'react-bootstrap';
+import {useParams} from 'react-router-dom';
 
-    return(
-        <Switch>
-        <Route exact path="/" component={Homepage}/>
-        <Route path="/men/tops">
-            <Mens path="items/men/tops" />
-        </Route>
-        <Route path="/men/bottoms">
-            <Mens path="items/men/bottoms" />
-        </Route>
-        <Route path="/women/tops">
-            <Womens path="items/women/tops" />
-        </Route>
-        <Route path="/women/bottoms" >
-            <Womens path="items/women/bottoms" />
-        </Route>
-        <Route path="/accesories">
-            {/* <Accesories /> */}
-        </Route>
-        <Route path="/deals">
-            {/* <Deals /> */}
-        </Route>
-        <Route exact path={`/search/${props.search}`}>
-                {/* <List path={`${props.search}`}/> */}
-            <SearchResults search={props.search}/>
-        </Route>
-        <Route path="/basket">
-            <Cart />    
-        </Route>
-        <ProtectedRoute path="/profile" component={Profile} />
-        <Route path={`/items/:id`} children={<Child />}>
-        </Route>
-        <Route component={Lost} />
-    </Switch>
-    )   
-}
-
-function Child() {
+function Item() {
     // We can use the `useParams` hook here to access
     // the dynamic pieces of the URL.
     let { id } = useParams();
@@ -148,4 +97,5 @@ function addToBasket(){
         </div>
     );
   }
-export default Routes;
+
+export default Item;

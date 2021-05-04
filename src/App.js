@@ -1,12 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
-import NavigationWithRouter from './components/Navbar';
 import {Modal, Button, Form, Col, Row} from 'react-bootstrap';
 import {useState} from 'react';
-// import Profile from './Profile';
-// import NavBar from './auth-nav';
 import { Route, Switch } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import {Item, Navigation, Homepage, Cart, SearchResults, Profile, Lost, Mens, Womens} from './components';
+import {AiOutlineGithub} from 'react-icons/ai';
 import './App.css';
+import ProtectedRoute from "./auth/protected-route";
+import NotFound from './components/NotFound';
+import RedirectToNotFound from './components/NotFound';
 
 function App() {
 	
@@ -19,8 +20,8 @@ function App() {
     	
 		
       	return(
-        	<Modal show={show} size="lg">
-          		<Modal.Header closeButton>
+        	<Modal onEscapeKeyDown={handleClose} show={show} size="lg">
+          		<Modal.Header>
            			<Modal.Title  id="modal-title">Subscribe to our newsletter</Modal.Title>
           		</Modal.Header>
           	<Modal.Body  id="modal">Subscribe to our newsletter for a 15% discount on your order
@@ -42,22 +43,65 @@ function App() {
       	)
     }
 
-  	return (
-    
-    	<div className="App">
-      		<PopUp/>
-        	<BrowserRouter>
-        		<NavigationWithRouter/>
-      		</BrowserRouter>
-		<div className="footer">
+	const DefaultRoutes = () => {
+		return ( 
+			<>
+				<PopUp/>
+        		<Navigation/>
+				<div className="container flex-grow-1">
+        			<Switch>
+        				<Route exact path="/" component={Homepage}/>
+        				<Route exact path="/men/tops">
+            				<Mens path="items/men/tops" />
+        				</Route>
+        				<Route exact path="/men/bottoms">
+            				<Mens path="items/men/bottoms" />
+        				</Route>
+        				<Route exact path="/women/tops">
+            				<Womens path="items/women/tops" />
+        				</Route>
+        				<Route exact path="/women/bottoms" >
+            				<Womens exact path="items/women/bottoms" />
+        				</Route>
+        				<Route exact path="/accesories">
+            				{/* <Accesories /> */}
+        				</Route>
+        				<Route exact path="/deals">
+            				{/* <Deals /> */}
+        				</Route>
+        				<Route exact path={`/search/:name`} render={() => {}}>
+            				<SearchResults/>
+        				</Route>
+        				<Route exact path="/basket" component={Cart} />
+        				<ProtectedRoute path="/profile" component={Profile} />
+        				<Route exact path={`/items/:id`} children={<Item />} />
+						<Route component={RedirectToNotFound} />
+					</Switch>
+				</div>
+				<div className="footer">
 			<Row>
 			<Col><button className="text-button" onClick={() => handleShow()}>Subscribe to newsletter</button></Col>
-			<Col><button className="text-button">Social media:</button></Col>
+			<Col><button className="text-button">Social media:</button><Row><AiOutlineGithub style={{marginLeft:"170px"}}/></Row></Col>
 			<Col><button className="text-button">Terms and Conditions</button></Col>
 			<Col><button className="text-button">FAQ</button></Col>
 			</Row>
 		</div>
-		</div>
+			</>
+		);
+	}
+	 
+
+  	return (
+		<>
+    	<div className="App">
+            <Switch>
+				<Route component={Lost} path="/notfound"/>
+                <Route component={DefaultRoutes}/>
+            </Switch>
+
+      </div>
+		
+		</>
   	);
 }
 

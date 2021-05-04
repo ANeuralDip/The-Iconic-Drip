@@ -12,7 +12,7 @@ import {BsSearch} from 'react-icons/bs';
 import {AiOutlineHome} from 'react-icons/ai';
 import {RiAccountCircleFill} from 'react-icons/ri';
 import {FaShoppingBasket} from 'react-icons/fa';
-import AuthNav from './auth-nav';
+import Profile from './profile';
 import AuthenticationButton from './authentication-button';
 
 function Navigation(props){//component definition with props 
@@ -77,7 +77,6 @@ function Navigation(props){//component definition with props
             				<Link  to={`/search/${field}`}><Button id="search-button" type="submit" variant="outline-dark"><BsSearch /></Button></Link><span/>
         				</Form>	
 				</Container>
-            <Routes search={field}/>
             </div>
     );
 }
