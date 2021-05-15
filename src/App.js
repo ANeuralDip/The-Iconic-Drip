@@ -1,25 +1,27 @@
-import { BrowserRouter } from 'react-router-dom';
 import {Modal, Button, Form, Col, Row} from 'react-bootstrap';
 import {useState} from 'react';
-import { Route, Switch } from "react-router-dom";
-import {Item, Navigation, Homepage, Cart, SearchResults, Profile, Lost, Mens, Womens} from './components';
+import { Route, Switch, useLocation } from "react-router-dom";
+import {Item, LinkResults, NavigationWithRouter, Homepage, Cart, SearchResults, Profile, Lost} from './components';
 import {AiOutlineGithub} from 'react-icons/ai';
 import './App.css';
 import ProtectedRoute from "./auth/protected-route";
-import NotFound from './components/NotFound';
 import RedirectToNotFound from './components/NotFound';
-
+import CheckoutForm from './CheckoutForm';
 function App() {
 	
 
+	
+	//states and functions for opening and closing the 'subscribe to newsletter' component
 	const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+	//the 'subscribe to newsletter' component
 	function PopUp(){
-    	
+    	//component based on the 'Modal' component from 'react-bootstrap' + 'Button' component and having an form-based input
 		
       	return(
+			
         	<Modal onEscapeKeyDown={handleClose} show={show} size="lg">
           		<Modal.Header>
            			<Modal.Title  id="modal-title">Subscribe to our newsletter</Modal.Title>
@@ -43,45 +45,39 @@ function App() {
       	)
     }
 
+	// don't remember what this function and variable were supposed to do, but deleting them stops the routing :D
+
+	function useQuery() {
+		return new URLSearchParams(useLocation().search);
+	  }
+	  
+	let query = useQuery();
+
 	const DefaultRoutes = () => {
 		return ( 
 			<>
+				{/* using the popup and navbar components */}
 				<PopUp/>
-        		<Navigation/>
+        		<NavigationWithRouter/>
 				<div className="container flex-grow-1">
+					{/* declaring the main routes */}
         			<Switch>
         				<Route exact path="/" component={Homepage}/>
-        				<Route exact path="/men/tops">
-            				<Mens path="items/men/tops" />
-        				</Route>
-        				<Route exact path="/men/bottoms">
-            				<Mens path="items/men/bottoms" />
-        				</Route>
-        				<Route exact path="/women/tops">
-            				<Womens path="items/women/tops" />
-        				</Route>
-        				<Route exact path="/women/bottoms" >
-            				<Womens exact path="items/women/bottoms" />
-        				</Route>
-        				<Route exact path="/accesories">
-            				{/* <Accesories /> */}
-        				</Route>
-        				<Route exact path="/deals">
-            				{/* <Deals /> */}
-        				</Route>
-        				<Route exact path={`/search/:name`} render={() => {}}>
-            				<SearchResults/>
-        				</Route>
-        				<Route exact path="/basket" component={Cart} />
-        				<ProtectedRoute path="/profile" component={Profile} />
-        				<Route exact path={`/items/:id`} children={<Item />} />
+        				<Route exact path="/items" component={LinkResults}/>
+        				<Route exact path={`/search/:name`} component={SearchResults} />
+        				<ProtectedRoute exact path="/basket" component={Cart} />
+        				<ProtectedRoute exact path="/profile" component={Profile} />
+        				<Route exact path={`/items/:item_id`} children={<Item />} />
+						{/* Route for non-declared url that will redirect to the "/notfound" url */}
 						<Route component={RedirectToNotFound} />
 					</Switch>
 				</div>
+
+				{/* page's footer */}
 				<div className="footer">
 			<Row>
 			<Col><button className="text-button" onClick={() => handleShow()}>Subscribe to newsletter</button></Col>
-			<Col><button className="text-button">Social media:</button><Row><AiOutlineGithub style={{marginLeft:"170px"}}/></Row></Col>
+			<Col><p className="text-button">Social media:</p><Row><a href="https://github.com/ANeuralDip/groupProject" ><AiOutlineGithub style={{marginLeft:"170px"}}/></a></Row></Col>
 			<Col><button className="text-button">Terms and Conditions</button></Col>
 			<Col><button className="text-button">FAQ</button></Col>
 			</Row>
@@ -93,15 +89,20 @@ function App() {
 
   	return (
 		<>
+		
+	  
     	<div className="App">
             <Switch>
+			<ProtectedRoute path='/checkout' component={CheckoutForm}/>
+				{/* route and component for the /notfound route */}
 				<Route component={Lost} path="/notfound"/>
+				{/* main routes */}
                 <Route component={DefaultRoutes}/>
             </Switch>
-
       </div>
 		
 		</>
+		
   	);
 }
 

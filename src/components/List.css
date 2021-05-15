@@ -4,14 +4,19 @@
 }
 
 
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
 #sort-button{
     font-family: "good times" !important;
     font-size: 20px;
     background: #343a40 !important;
     color: aqua;
     border: 3px solid aqua ;
-    position: relative;
-    left: 850%;
+    margin-right: -150px;
 }
 
 #sort-button::after{

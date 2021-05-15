@@ -3,17 +3,32 @@
   src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
 }
 
+.container{
+	
+	margin:auto;
+	text-align: center;
+	
+}
+
 .carousel {
-    width:1200px;
-    height:auto;
-    margin: auto;
-    border: 3px solid aqua;
-  }
+	width: min-content;
+	height: auto;
+	margin: auto;
+	margin-bottom: 20px;
+}
 
 #card-image{
-    width:1200px;
-    height:500px;
-    margin: auto;
+	border: 3px solid aqua;
+	width: 700px;
+	height: 500px;
+	margin: auto;
+}
+
+.carousel-caption{
+	text-align: center !important;
+	font-size: 25px !important;
+	font-family: 'good times' !important;
+	color: aqua !important;
 }
 
 #modal{
@@ -25,4 +40,14 @@
   font-size: 30px !important;
   font-family: 'good times' !important;
   color: darkblue;
+}
+
+.carousel-title{
+	font-family: "good times";
+	color: initial;
+}
+
+.carousel-title:hover, a:hover{
+	color: aqua;
+	text-decoration: none !important;
 }

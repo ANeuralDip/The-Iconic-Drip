@@ -1,25 +1,22 @@
 import React, {useState} from 'react';
 //import components used for routing
-import {withRouter, NavLink, Link} from 'react-router-dom';
+import {useLocation, NavLink, Link, withRouter} from 'react-router-dom';
 //import css
 import './Navbar.css';
-//import the creacte routes
-import Routes from './Routes';
 //importing react-bootstrap components
 import {Form, FormControl, Image, Button, Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 //importing icons:
 import {BsSearch} from 'react-icons/bs';
 import {AiOutlineHome} from 'react-icons/ai';
-import {RiAccountCircleFill} from 'react-icons/ri';
-import {FaShoppingBasket} from 'react-icons/fa';
-import Profile from './profile';
+import {FaShoppingBasket, FaPercentage} from 'react-icons/fa';
+
 import AuthenticationButton from './authentication-button';
 
-function Navigation(props){//component definition with props 
+function Navigation(){//component definition with props 
     
-    const { location } = props;//location from react-router-dom used for highlighting current page in menu
+    // const location  = useLocation();//location from react-router-dom used for highlighting current page in menu
     const [field, setField]=useState("");//field variable for storing search bar query
-
+    let location = useLocation();
 
     return(
         <div>
@@ -32,37 +29,44 @@ function Navigation(props){//component definition with props
                 {/*site's logo as a to home button */}
                 <Navbar.Brand><Link exact to="/"> <Image id="logo" src="/white-logo.png" alt="logo"/></Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Nav activeKey={location.pathname} className="navigation">{}
-                        <Nav.Link as={NavLink} exact to="/"><AiOutlineHome size={32}/></Nav.Link>{/* home logo*/}
+                    <Nav activeKey={location} className="navigation">
 
                         {/* dropdown menu item for male clothing*/}
-                        <NavDropdown alignRight eventKey="link0" collapseOnSelect={true} renderMenuOnMount={true} as={NavLink} to="/men" title="Men's Clothing">
-                                <Nav.Link eventKey="link1" as={NavLink} to="/men/tops">Tops</Nav.Link>
+                        <NavDropdown alignRight renderMenuOnMount={true} title="Men's Clothing">
+                                <Nav.Link as={Link} activeClassName="is-active" to="/items?category=men&type=t-shirt">Tshirts</Nav.Link>
                                 <NavDropdown.Divider />
-                                <Nav.Link eventKey="link2" as={NavLink} to="/men/bottoms">Bottoms</Nav.Link>
+                                <Nav.Link as={Link} activeClassName="is-active" to="/items?category=men&type=jeans">Jeans</Nav.Link>
                         </NavDropdown>
 
                         {/* dropdown menu item for female clothing*/}
-                        <NavDropdown alignRight renderMenuOnMount={true} as={NavLink} to="/women" title="Women's Clothing">
-                            <Nav.Link eventKey="link3"as={NavLink} to="/women/tops">Tops</Nav.Link>
+                        <NavDropdown alignRight renderMenuOnMount={true} collapseOnSelect={true} title="Women's Clothing">
+                            <Nav.Link as={Link} to="/items?category=women&type=hoodie">Hoodies</Nav.Link>
                             <NavDropdown.Divider />
-                            <Nav.Link eventKey="link4" as={NavLink} to="/women/bottoms">Bottoms</Nav.Link>
+                            <Nav.Link as={Link} to="/items?category=women&type=t-shirt">Tshirts</Nav.Link>
+                            <NavDropdown.Divider />
+                            <Nav.Link as={Link} to="/items?category=women&type=trousers">Trousers</Nav.Link>
+                            <NavDropdown.Divider />
+                            <Nav.Link as={Link} to="/items?category=women&type=shoes">Shoes</Nav.Link>
                         </NavDropdown>
-
-                        {/* TBA dropdown menu item for accessories */}
-                        <NavDropdown alignRight renderMenuOnMount={true} as={NavLink} to="/accesories" title="Accesories" id="basic-nav-dropdown">
-                        </NavDropdown>
-
-                        <Nav.Link as={NavLink} to="/deals">Deals</Nav.Link>
                         
-                        {/* div withing navbar containing the user-related pages */}
+                        {/* dropdown menu item for unisex clothing*/}
+                        <NavDropdown alignRight renderMenuOnMount={true} collapseOnSelect={true} title="Unisex Clothing">
+                            <Nav.Link as={Link} to="/items?category=unisex&type=hoodie">Hoodies</Nav.Link>
+                            <NavDropdown.Divider />
+                            <Nav.Link as={Link} to="/items?category=unisex&type=t-shirt">Tshirts</Nav.Link>
+                            <NavDropdown.Divider />
+                            <Nav.Link as={Link} to="/items?category=unisex&type=shoes">Shoes</Nav.Link>
+                        </NavDropdown>
+
+                        {/* dropdown menu item for accessories */}
+                        <Nav.Link as={Link} to="/items?category=accessories">Accesories</Nav.Link>
+
+                        {/* Nav.Link for deals */}
+                        <Nav.Link as={Link} to="/deals">Deals<FaPercentage /></Nav.Link>
+                        
+                        {/* div within navbar containing the user-related pages (account and cart) */}
                         <div className="client-side">
-                            <Nav.Link as={NavLink} to="/basket"><FaShoppingBasket /> Shopping basket</Nav.Link>
-                            {/* <NavDropdown id="account" title={<><RiAccountCircleFill /> Account</>}>
-                                
-                                <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>
-                                <Nav.Link as={Link} to="/login">Log in</Nav.Link>
-                            </NavDropdown> */}
+                            <Nav.Link as={Link} to="/basket"><FaShoppingBasket /> Cart</Nav.Link>
                         <AuthenticationButton />
                             
                         </div>
@@ -71,15 +75,21 @@ function Navigation(props){//component definition with props
             </Navbar>
 
             {/* search bar and button */}
-				<Container>
+				<Container fluid>
 						<Form inline id="search-bar">   
-            				<FormControl id="search-input" value={field} onChange ={e => setField(e.target.value)} type="text" placeholder="Search item" className="mr-sm-2" />
-            				<Link  to={`/search/${field}`}><Button id="search-button" type="submit" variant="outline-dark"><BsSearch /></Button></Link><span/>
+            				<FormControl id="search-input" value={field} onChange ={e => setField(e.target.value)}
+                             type="text" placeholder="Search item" className="mr-sm-2" />
+            				{/* Search button acts as a link when pressed or form is submited */}
+                            <Link  to={`/search/${field}`}><Button id="search-button" type="submit" variant="outline-dark">
+                                <BsSearch /></Button>
+                            </Link>
+                            <span/>
         				</Form>	
 				</Container>
             </div>
     );
 }
 
-const NavigationWithRouter = withRouter(Navigation);{/* used for getting the location prop  and the= closest <Route> match(from Routes.js) */}
+const NavigationWithRouter = withRouter(Navigation)
+
 export default NavigationWithRouter;

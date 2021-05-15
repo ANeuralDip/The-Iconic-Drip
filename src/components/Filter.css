@@ -5,8 +5,7 @@
   background: #343a40 !important;
   color: aqua;
   border: 3px solid aqua ;
-  position: relative;
-  left: -100px;
+  margin-left: -150px;
 }
 
 .filter-menu {

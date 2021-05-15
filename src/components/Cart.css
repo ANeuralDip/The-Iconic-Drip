@@ -1,0 +1,26 @@
+.cart-table{
+    margin-top: 5%;
+    color:#009999 !important;
+    font-family:"good times";
+    font-size: 23px;
+    text-decoration: inherit !important;
+}
+
+#cart-select-option{
+    font-family: "good times";
+    color: #009999;
+    font-size: 23px;
+}
+
+#cart-select-option:hover{
+    color: black;
+}
+
+#cart-link{
+    text-decoration: none !important;
+    color: #009999 !important;
+}
+
+#cart-link:hover{
+    color: darkblue !important;
+}

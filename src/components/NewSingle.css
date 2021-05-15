@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'good times';
-    src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
-}
+
 
 h1 {
     text-align: center;
@@ -16,7 +13,7 @@ h1 {
 
 .card-title:hover{
     text-decoration: none;
-    color: darkblue;
+    color: #009999;
 }
 
 .price{
@@ -25,19 +22,18 @@ h1 {
 }
 
 #image{
-    height: 600px;
-    width: 400px;
+    height: 495px;
+    width: 445px;
 }
 
 #card{
-    display: flex !important;
-    flex: 1 1 auto;
-    height: 100%;
-    width: min-content;
+    height: 880px;
+    width: 450px;
     border: 2px solid aqua !important;
     font-family: "good times";
     background-color: #343a40 !important;
     color: white !important;
+    margin-bottom: 5%
 }
 
 #card-body{

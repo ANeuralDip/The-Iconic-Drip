@@ -3,6 +3,12 @@
     src: local('good times'), url(../fonts/good times rg.ttf) format('trueType');
   }
 
+
+.title{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
 #logo{
     height: 80px;
     width: 80px;
@@ -11,7 +17,7 @@
 .nav-link{
     font-family: "good times";
     color:white !important;
-    font-size: 20px;
+    font-size: 20px !important;
     font-weight: 500;
     
 }
@@ -58,9 +64,11 @@ padding:0;
 }
 
 #search-bar{
-    position: relative;
-    left: 950px;
-    margin-top: 2%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3%;
+    margin-right: -50px;
+    margin-bottom: 2%;
 }
 
 #search-input{
@@ -114,4 +122,8 @@ div.nav-item.dropdown::after{
 
 #account::after{
     display: none;
+}
+
+.is-active{
+    color: aqua;
 }
