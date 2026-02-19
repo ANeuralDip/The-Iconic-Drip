@@ -3,42 +3,31 @@ var express = require("express");
 var cors = require("cors");
 var bodyParser = require("body-parser");
 var app = express();
-var mysql = require('mysql');
 var async = require("async")
-//connecting to the database
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'ANeuralDip.13',
-  database: 'theiconicdrip',
-  port: '3307'
+const { Pool } = require('pg');
+
+// Replace the string below with the "URI" or "Connection String" from your dashboard
+const connectionString = REDACTED;
+
+const pool = new Pool({
+  connectionString: connectionString
 });
-let index = 2
-//checking if the connection is successful
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
+
+// To keep your code working without changing every line:
+const connection = {
+  query: (text, params, callback) => {
+    return pool.query(text, params, (err, res) => {
+      // Postgres returns results in res.rows, so we pass that to your existing logic
+      if (callback) callback(err, res ? res.rows : null);
+    });
   }
+};
 
-  console.log('connected as id ' + connection.threadId);
-});
+app.use(cors());
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-app.use(express.static('public'))//used for getting the items' pictures
-app.use(cors());//enables cross-origin resource sharing
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
-app.use(bodyParser.json())
-app.use(
-    express.urlencoded({
-      extended: true
-    })
-  )
-  
-  app.use(express.json())
 
 // Server port
 var HTTP_PORT = REDACTED
@@ -136,17 +125,15 @@ app.route("/basket/:email")
     })
 
     .put((req, res, next) => {
-        let sql = "UPDATE item_in_cart SET quantity = ? WHERE cust_id = (SELECT cust_id FROM customer WHERE email = ?) AND item_id = ? AND size = ?"
-        var body = req.body
-        body.forEach(element => {
-            
-            params=[element.quantity, req.params.email, element.item_id, element.size]
-            console.log(params)
-            
-            connection.query(sql, params, (err, rows) => {
-
-            console.log(rows)
-            })
+    let sql = "UPDATE item_in_cart SET quantity = $1 WHERE cust_id = (SELECT cust_id FROM customer WHERE email = $2) AND item_id = $3 AND size = $4";
+    
+    // Use async to handle multiple queries
+    async.eachSeries(req.body, (element, callback) => {
+        let params = [element.quantity, req.params.email, element.item_id, element.size];
+        pool.query(sql, params, callback);
+    }, (err) => {
+        if (err) return res.status(400).json({ error: err.message });
+        res.json({ message: "Basket updated" }); // MUST send a response!
     });
 });
 //search item by name
@@ -214,7 +201,10 @@ app.get("/items", (req, res, next) => {
     let sql = "";    
     var category = req.query.category;
     var type = req.query.type;
-    if (type == null) {//when both type and category are received from the front-end
+    if (type == null && category == null){
+        sql=`SELECT * FROM items`
+    }
+    else if (type == null) {//when both type and category are received from the front-end
         sql = `SELECT * FROM items WHERE category= ? GROUP BY item_id`;
         var params = [category];
     }   

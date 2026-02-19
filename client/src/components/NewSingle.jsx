@@ -3,8 +3,8 @@ import {Button, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import './NewSingle.css';
 import axios from 'axios';
-import {Snackbar} from "@material-ui/core";
-import MuiAlert from '@material-ui/lab/Alert';
+import {Snackbar} from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
 import {useAuth0} from '@auth0/auth0-react';
 //creating the item card function
 function ItemCard({item}){

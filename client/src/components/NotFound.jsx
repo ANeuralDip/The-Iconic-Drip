@@ -1,8 +1,8 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 const RedirectToNotFound = () => {
-  return <Redirect to="/notfound" />;
+  return <Navigate to="/notfound" replace/>;
 };
 
 export default RedirectToNotFound;

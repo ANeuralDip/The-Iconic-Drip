@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ItemCard from './NewSingle';
-import { CardDeck, DropdownButton, Dropdown, Container} from 'react-bootstrap/';
+import { Row, Col, DropdownButton, Dropdown, Container} from 'react-bootstrap/';
 import './List.css';
 import Filter from './Filter';
 import {useLocation, useParams} from 'react-router-dom';
-import {Grid} from '@material-ui/core';
+import {Grid} from '@mui/material';
 
 //create the List component
 function List(){
@@ -74,39 +74,39 @@ function List(){
 				}
 			}
 			
-		return(
-			// the sort button, which is a dropdown button with different options
-			<div>
-			<DropdownButton id="sort-button" title="Sort by:">
-				{/* onClick function composed of the sort function and setValue, used for forcing react to re-render the list */}
-				<Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('name', false, (a) =>  a.toUpperCase())) }}>Alphabetically</Dropdown.Item>
-				<Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('name', true, (a) =>  a.toUpperCase())) }}>Reverse alphabetically</Dropdown.Item>
-				<Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('price', false, parseFloat())) }}>Price ascending</Dropdown.Item>
-				<Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('price', true, parseFloat())) }}>Price descending</Dropdown.Item>
-			</DropdownButton>
-			</div>
-		)
+		return (
+            // the sort button, which is a dropdown button with different options
+            <div>
+                <DropdownButton id="sort-button" title="Sort by:">
+                    {/* onClick function composed of the sort function and setValue, used for forcing react to re-render the list */}
+                    <Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('name', false, (a) =>  a.toUpperCase())) }}>Alphabetically</Dropdown.Item>
+                    <Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('name', true, (a) =>  a.toUpperCase())) }}>Reverse alphabetically</Dropdown.Item>
+                    <Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('price', false, parseFloat())) }}>Price ascending</Dropdown.Item>
+                    <Dropdown.Item id="sort-option" onClick={() => {setValue(value+1); item.sort(sort_by('price', true, parseFloat())) }}>Price descending</Dropdown.Item>
+                </DropdownButton>
+            </div>
+        );
 }
 
-		return(
-			<>
-				{/* creating a div for the Filter and Sort components */}
-				<div className="buttons">
+		return (
+            <>
+                {/* creating a div for the Filter and Sort components */}
+                <div className="buttons">
 				<Filter />
 				<SortButton/>
 				
 				
-				</div>	
-					<div className="cards">{/* creating a list of the previous item cards */}
-						<Grid
-  container
-  direction="row"
-  justify="space-evenly"
-  alignItems="center"
+				</div>
+                <div className="cards">{/* creating a list of the previous item cards */}
+                    <Grid
+container
+direction="row"
+justifyContent="space-evenly"
+alignItems="center"
 >{renderItems()}</Grid>
-					</div>
-			</>
-		);
+                </div>
+            </>
+        );
 
 }
 
