@@ -1,0 +1,65 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@auth0/auth0-react": "^2.15.0",
+    "@auth0/auth0-spa-js": "^2.16.0",
+    "@mui/styles": "^6.5.0",
+    "@paypal/react-paypal-js": "^8.9.2",
+    "@stripe/react-stripe-js": "^5.6.0",
+    "@stripe/stripe-js": "^8.7.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "ajv": "^8.18.0",
+    "ajv-keywords": "^5.1.0",
+    "async": "^3.2.6",
+    "axios": "^1.13.5",
+    "bootstrap": "^5.3.8",
+    "cors": "^2.8.6",
+    "react": "^19.2.4",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.5.0",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-pro-sidebar": "^1.1.0",
+    "react-router-dom": "^7.13.0",
+    "react-star-ratings": "^2.3.0",
+    "stripe": "^20.3.1",
+    "web-vitals": "^5.1.0"
+  },
+  "proxy": "http://localhost:8080",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "nodemon": "^3.1.11",
+    "vite": "^7.3.1"
+  },
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
+  }
+}

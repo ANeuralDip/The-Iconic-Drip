@@ -3,8 +3,8 @@ import StarRatings from 'react-star-ratings';
 import axios from 'axios'
 import {Col, Row, Button} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
-import {Snackbar} from "@material-ui/core";
-import MuiAlert from '@material-ui/lab/Alert';
+import {Snackbar} from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
 import './Item.css';
 import {useAuth0} from '@auth0/auth0-react';
 

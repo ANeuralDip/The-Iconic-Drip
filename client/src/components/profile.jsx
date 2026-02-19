@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {Form, Button, ButtonGroup, FormLabel} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import './Login.css';
-import { FormGroup } from "@material-ui/core";
+import { FormGroup } from "@mui/material";
 
 const Profile = () => {
 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 //import components used for routing
-import {useLocation, NavLink, Link, withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 //import css
 import './Navbar.css';
 //importing react-bootstrap components
@@ -16,7 +17,8 @@ function Navigation(){//component definition with props
     
     // const location  = useLocation();//location from react-router-dom used for highlighting current page in menu
     const [field, setField]=useState("");//field variable for storing search bar query
-    let location = useLocation();
+    const navigate = useNavigate(); // Replaces history.push
+    const location = useLocation(); // Replaces props.location
 
     return(
         <div>
@@ -90,6 +92,4 @@ function Navigation(){//component definition with props
     );
 }
 
-const NavigationWithRouter = withRouter(Navigation)
-
-export default NavigationWithRouter;
+export default Navigation;

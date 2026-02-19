@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Dropdown, ToggleButtonGroup, ToggleButton, ButtonGroup} from 'react-bootstrap';
-import { Slider} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Slider} from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 import "./Filter.css";
 
 

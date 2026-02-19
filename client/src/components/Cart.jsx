@@ -1,11 +1,11 @@
 import React, { useState, useEffect} from 'react';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {Table, Button } from 'react-bootstrap';
-import {Select, MenuItem}  from '@material-ui/core';
+import {Select, MenuItem}  from '@mui/material';
 import './Cart.css';
-import {Snackbar} from "@material-ui/core";
-import MuiAlert from '@material-ui/lab/Alert';
+import {Snackbar} from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
 import {useAuth0} from '@auth0/auth0-react';
 
 function Cart(){
