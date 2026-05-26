@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Homepage.css';
 import {Grid} from '@mui/material';
 import {Link} from 'react-router-dom';
+import {getItems} from '../apis/items';
 
 function Homepage(){
 
@@ -11,41 +12,25 @@ function Homepage(){
 	const [men, setMen] = useState([])
 	const [women, setWomen] = useState([])
 	const [accessories, setAccessories] = useState([])
+    const fetchData = async () => {
+                const menData = await getItems('','men');
+                const womenData = await getItems('','women');
+                const accessoriesData = await getItems('accessory','');
 
+                setMen(menData);
+                setWomen(womenData);
+                setAccessories(accessoriesData);
+            };
 	//fetching the data from the server
 	useEffect(()=>{
-		
-		axios.get(`http://localhost:REDACTED/items?category=men`)//perform the get request, gathering all the database values
-		.then((response) => {
-			let data = response.data;
-			setMen(data);//binding the database data to the men state
-		})
-			
-		.catch((err) => console.log(err))
-
-		axios.get(`http://localhost:REDACTED/items?category=women`)//perform the get request, gathering all the database values
-		.then((response) => {
-			let data = response.data;
-			setWomen(data);//binding the database data to the women state
-		})
-			
-		.catch((err) => console.log(err))
-
-		axios.get(`http://localhost:REDACTED/items?category=accessories`)//perform the get request, gathering all the database values
-		.then((response) => {
-			let data = response.data;
-			setAccessories(data);//binding the database data to the accessories state
-		})
-			
-		.catch((err) => console.log(err))
-		
+		fetchData();
 	},[])
 
 	function Slides(type){//function that creates a carousel for each state received using props
 		function renderItems(type){
 			//mapping the state and returning the images
 			return type.map(item =>
-			<img id="card-image" src={`http://localhost:REDACTED/${item.item_id}.jpg`} alt="carousel-image" />
+			<img id="card-image" src={`http://localhost:REDACTED/${item.item_id}.jpg`} alt={item.item_name} />
 		)}; 
 		return (
             // carousel component from @material-ui with attributes
