@@ -1,45 +1,56 @@
-# Group Project - The Iconic Drip![TID logo](/public/favicon.ico)
- Group 12's repository
- 
-## Functions:
-- [x] Customer can Register and make an account 
-- [x] Payment method 
-- [x] Search bar 
-- [x] Add/remove products from basket 
-- [ ] Wish list 
-- [x] Review for each item 
-- [ ] Returns/ Policies  
-- [ ] History of orders 
-- [ ] Types of deliveries (different charges) 
-- [x] Sign out function 
-- [ ] Discounts/Deals
-- [ ] Filter
-- [x] Sort
-- [x] Newsletter
- 
-## Software used: 
-- for the Front-end:
-  - [React.js](https://reactjs.org/)
-  - [Axios.js](https://github.com/axios/axios)
-  - [React Bootstrap](https://react-bootstrap.github.io/)
-  - [React Router](https://reactrouter.com/)
-  - [React Star Ratings](https://www.npmjs.com/package/react-star-ratings)
-  - [Material-UI](https://material-ui.com)
-  - [React PayPal Button v2](https://www.npmjs.com/package/react-paypal-button-v2)
-  - [Auth0](https://auth0.com)
-- for the Back-end:
-  - [Node.js](https://nodejs.org/en/)
-  - [Cors](https://www.npmjs.com/package/cors)
-  - [Express.js](https://expressjs.com/)
-  - [MySQL](https://www.npmjs.com/package/mysql)
+# The Iconic Drip — E-Commerce Platform
 
-## Using the repository:
- 1. Clone the repository on your local machine
- 2. Import the database from the .sql file to your mysql server
- 3. Change the mysql connection details at the beginning of the server.js file
- 4. In your editor, navigate to the repository's folder
- 5. Toggle the terminal and type `npm install` ([Node.js](https://nodejs.org/en/) needs to be installed on your computer)
- 6. Followed by `npm start` for the front end
- 7. Navigate to the server-side folder using `cd server-side`
- 8. Use `node .\server.js` to start the server
- 9. Using a browser, navigate to `http://localhost:3000/` for the front-end app
+Originally built as a university group project (Group 12), this repository is now being independently refactored and modernised by Paul-Andrei Ferariu.
+
+## Project History
+
+- **Original build (group project):** Full-stack e-commerce app built collaboratively for university coursework. Stack: React, Node.js/Express, MySQL, Auth0, React Bootstrap.
+- **Current refactor (solo, ongoing):** Independently migrating the application to a more production-aligned stack and architecture.
+
+## Refactor Scope (In Progress)
+
+- [x] Updated npm dependencies
+- [x] Migrated database from MySQL to PostgreSQL
+- [ ] Migrating data fetching/caching to TanStack Query
+- [ ] Modernising routing (React Router upgrade)
+- [ ] Containerising backend with Docker/Kubernetes
+- [ ] Deploying to AWS (EC2)
+- [ ] Adding automated tests
+- [ ] Adding CI pipeline (GitHub Actions: lint + test on push)
+
+## Original Features (Group Project)
+
+- [x] Customer registration and login
+- [x] Payment method integration
+- [x] Search bar
+- [x] Add/remove products from basket
+- [x] Product reviews
+- [x] Sort
+- [x] Newsletter signup
+- [ ] Wish list
+- [ ] Returns/policies
+- [ ] Order history
+- [ ] Delivery type/charge options
+- [ ] Discounts/deals
+- [ ] Filter
+
+## Tech Stack (Current)
+
+**Frontend:** React, React Router, TanStack Query, React Bootstrap, Material-UI
+**Backend:** Node.js, Express.js
+**Database:** PostgreSQL (migrated from MySQL)
+**Infra (in progress):** Docker, Kubernetes, AWS EC2
+
+## Running Locally
+
+1. Clone the repository
+2. Set up a local PostgreSQL instance and update connection details in the server config
+3. Run `npm install` in both `client` and `server` directories
+4. Start the backend: `cd server && node server.js`
+5. Start the frontend: `cd client && npm start`
+6. Navigate to `http://localhost:3000/`
+
+## Contributors
+
+Original group project: Group 12 (university coursework)
+Current refactor: [Paul-Andrei Ferariu](https://github.com/ANeuralDip)
