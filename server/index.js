@@ -7,7 +7,7 @@ const db = require('./db');
 require('dotenv').config();
 const itemsRouter = require('./routes/items');
 const customerRouter = require('./routes/customers');
-
+const basketRouter = require('./routes/baskets');
 //use the items router for all routes starting with /items
 app.use('/items', itemsRouter);
 
