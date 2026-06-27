@@ -40,7 +40,7 @@ setOpen(false);
 
       function handleCheckout(){
           console.log(cart)
-          axios.put(`http://localhost:REDACTED/basket/${user.email}`, cart)
+          axios.put(`http://localhost:8080/basket/${user.email}`, cart)
       }
 
     function removeFromBasket(id, size, name){
@@ -49,14 +49,14 @@ setOpen(false);
         console.log(value)
         setValue(value+1)
         console.log(value)
-        axios.delete(`http://localhost:REDACTED/basket/${user.email}`,{ data: {item_id: id, size: size}})
+        axios.delete(`http://localhost:8080/basket/${user.email}`,{ data: {item_id: id, size: size}})
 
         }
         
 
     useEffect(()=>{
         
-        axios.get(`http://localhost:REDACTED/basket/${user.email}`)//perform the get request, gathering all the database values
+        axios.get(`http://localhost:8080/basket/${user.email}`)//perform the get request, gathering all the database values
         .then((response) => {
             return response.data;
         })

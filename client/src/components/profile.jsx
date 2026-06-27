@@ -50,13 +50,13 @@ const Profile = () => {
 	};
 
 	function handleSubmit(){
-		axios.post(`http://localhost:REDACTED/customers`, customer)//send the item to the server
+		axios.post(`http://localhost:8080/customers`, customer)//send the item to the server
 			.catch((err) => console.log(err))//if the server returns an error, update the error state
 			setValue(value+1)
 		}
 
 		function handleUpdate(){
-			axios.put(`http://localhost:REDACTED/customers`, customer)//send the item to the server
+			axios.put(`http://localhost:8080/customers`, customer)//send the item to the server
 			.catch((err) => console.log(err))
 		}
 		

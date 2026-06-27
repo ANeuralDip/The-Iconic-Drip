@@ -15,7 +15,7 @@ export default defineConfig({
     // 3. The "Telephone Line" to your Node server
     proxy: {
       '/api': {
-        target: 'http://localhost:REDACTED',
+        target: 'http://localhost:8080',
         changeOrigin: true,
         secure: false,
       }

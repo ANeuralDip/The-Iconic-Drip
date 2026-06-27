@@ -30,7 +30,7 @@ function Homepage(){
 		function renderItems(type){
 			//mapping the state and returning the images
 			return type.map(item =>
-			<img id="card-image" src={`http://localhost:REDACTED/${item.item_id}.jpg`} alt={item.item_name} />
+			<img id="card-image" src={`http://localhost:8080/${item.item_id}.jpg`} alt={item.item_name} />
 		)}; 
 		return (
             // carousel component from @material-ui with attributes

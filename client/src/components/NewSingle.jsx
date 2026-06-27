@@ -32,7 +32,7 @@ function ItemCard({item}){
 		function addToBasket(){
 
 				setOpen(true);//display the Alert/Snackbar component
-				axios.post(`http://localhost:REDACTED/basket/${user.email}`, item)//send the item to the server
+				axios.post(`http://localhost:8080/basket/${user.email}`, item)//send the item to the server
 				.catch((err) => {setError(err)})//if the server returns an error, update the error state
 				setError('')//set error state to null after displaying the Alert/Snackbar component 
 		
@@ -43,7 +43,7 @@ function ItemCard({item}){
 				<Card id="card" bg="light" text="dark" border="dark" >
 					{/* card image working as a link to the item's page */}
 						<Link  to={`/items/${item.item_id}`}>
-							<Card.Img id="image" src={`http://localhost:REDACTED/${item.item_id}.jpg`} />
+							<Card.Img id="image" src={`http://localhost:8080/${item.item_id}.jpg`} />
 						</Link>
 						<Card.Body id="card-body">
 							{/* card title working as a link to the item's page */}

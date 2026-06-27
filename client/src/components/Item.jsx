@@ -20,7 +20,7 @@ function Item() {
 	const [size, setSize] = useState('xs')
 
 	//source for the image which is found using the url parameters
-	let src1 =`http://localhost:REDACTED/${item_id}.jpg`
+	let src1 =`http://localhost:8080/${item_id}.jpg`
 
 	
 	//same Alert/Snackbar components from the NewSingle.js
@@ -43,7 +43,7 @@ function Item() {
 		item.size = size//creating a size property and assigning the size state
 		item.quantity = quantity//creating a quantity property and assigning the quantitystate
 		setOpen(true);//open the Alert/Snackbar components
-		axios.post(`http://localhost:REDACTED/basket/${user.email}`, item)//send the item to the server
+		axios.post(`http://localhost:8080/basket/${user.email}`, item)//send the item to the server
 		.catch((err) => {setError(err)})
 		setError('')
 	};
@@ -51,7 +51,7 @@ function Item() {
 //the effect runs at the initial rendering
 		useEffect(()=>{
 				
-				axios.get(`http://localhost:REDACTED/items/${item_id}`)//perform the get request, gathering the database row with item_id as id
+				axios.get(`http://localhost:8080/items/${item_id}`)//perform the get request, gathering the database row with item_id as id
 				.then((response) => {
 								console.log("data:", response.data)
 								let data = response.data[0];

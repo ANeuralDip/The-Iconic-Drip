@@ -21,7 +21,7 @@ function List(){
 			useEffect(()=>{
 				//if clause for when list is used by either the search bar (the if statement) or by the navbar links (else statement)
 				if (name) {
-					axios.get(`http://localhost:REDACTED/search/${name}`)//perform the get request, gathering all the database values
+					axios.get(`http://localhost:8080/search/${name}`)//perform the get request, gathering all the database values
 				.then((response) => {
 						return response.data;    
 				})
@@ -31,7 +31,7 @@ function List(){
 				})
 				.catch((err) => console.log(err))
 				} else {
-				axios.get(`http://localhost:REDACTED/items${location.search}`)//perform the get request, gathering all the database values
+				axios.get(`http://localhost:8080/items${location.search}`)//perform the get request, gathering all the database values
 				.then((response) => {
 						return response.data;    
 				})
