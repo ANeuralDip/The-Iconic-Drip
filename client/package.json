@@ -29,7 +29,7 @@
     "stripe": "^20.3.1",
     "web-vitals": "^5.1.0"
   },
-  "proxy": "http://localhost:REDACTED",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "vite",
     "build": "vite build",
