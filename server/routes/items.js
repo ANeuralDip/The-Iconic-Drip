@@ -2,21 +2,10 @@ const express = require("express");
 const router = express.Router();
 const db = require('../db');
 
-router.get("/:item_id", async (req, res, next) => {
-    try {
-        var sql = 'SELECT item_id, name, type, category, size, price, image FROM items WHERE item_id = $1';
-        var params = [req.params.item_id];
-        console.log("items id: ", params);
-        var rows = await db.query(sql, params);
-        console.log("itemid get", rows);
-        res.json(rows);
-    } catch (err) {
-        res.status(400).json({ "error": err.message });
-    }
-});
+
 
 //get all items that have different attributes
-router.get("/items", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
     
     let sql = "";    
     var category = req.query.category;
@@ -37,13 +26,27 @@ router.get("/items", async (req, res, next) => {
         var params = [type, category];
     }
     
-    var rows = await db.query(sql, params)
+    
     try{
+        var rows = await db.query(sql, params)
         res.json(rows);
     } catch (err) {
         res.status(500).json({"error": err.message});
     }
         
+});
+
+router.get("/:item_id", async (req, res, next) => {
+    try {
+        var sql = 'SELECT item_id, name, type, category, size, price, image FROM items WHERE item_id = $1';
+        var params = [req.params.item_id];
+        console.log("items id: ", params);
+        var rows = await db.query(sql, params);
+        console.log("itemid get", rows);
+        res.json(rows);
+    } catch (err) {
+        res.status(400).json({ "error": err.message });
+    }
 });
 
 // Export the router
