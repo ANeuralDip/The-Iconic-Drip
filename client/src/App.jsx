@@ -62,11 +62,11 @@ function App() {
 				<div className="container flex-grow-1">
 					{/* declaring the main routes */}
         			<Routes>
-        				<Route exact path="/" element={<Homepage />}/>
-        				<Route exact path="/items" element={<LinkResults />}/>
-        				<Route exact path={`/search/:name`} element={<SearchResults />} />
-        				<Route  exact path="/basket" element={<Cart />} />
-        				<Route  exact path="/profile" element={<Profile />} />
+        				<Route path="/" element={<Homepage />}/>
+        				<Route path="/items" element={<LinkResults />}/>
+        				<Route path={`/search/:name`} element={<SearchResults />} />
+        				<Route path="/basket" element={<Cart />} />
+        				<Route path="/profile" element={<Profile />} />
         				<Route path="/items/:item_id" element={<Item />} />
 						{/* Route for non-declared url that will redirect to the "/notfound" url */}
 						<Route path="*" element={<RedirectToNotFound />} />
