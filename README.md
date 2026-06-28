@@ -11,11 +11,13 @@ Originally built as a university group project (Group 12), this repository is no
 
 - [x] Updated npm dependencies
 - [x] Migrated database from MySQL to PostgreSQL
+- [x] Replaced Auth0 with custom JWT-based authentication (bcrypt + jsonwebtoken)
 - [ ] Migrating data fetching/caching to TanStack Query
-- [ ] Modernising routing (React Router upgrade)
-- [ ] Containerising backend with Docker/Kubernetes
-- [ ] Deploying to AWS (EC2)
-- [ ] Adding automated tests
+- [x] Modernising routing (React Router upgrade)
+- [ ] Lightweight repository pattern for backend data access
+- [ ] Containerising backend with Docker
+- [ ] Deploying to AWS (EC2 + RDS)
+- [ ] Adding automated tests (backend auth coverage in progress)
 - [ ] Adding CI pipeline (GitHub Actions: lint + test on push)
 
 ## Original Features (Group Project)
@@ -38,17 +40,26 @@ Originally built as a university group project (Group 12), this repository is no
 
 **Frontend:** React, React Router, TanStack Query, React Bootstrap, Material-UI
 **Backend:** Node.js, Express.js
+**Auth:** JWT (jsonwebtoken) + bcrypt for password hashing
 **Database:** PostgreSQL (migrated from MySQL)
-**Infra (in progress):** Docker, Kubernetes, AWS EC2
+**Testing:** Jest, Supertest
+**Infra (in progress):** Docker, AWS EC2 + RDS
 
 ## Running Locally
 
 1. Clone the repository
 2. Set up a local PostgreSQL instance and update connection details in the server config
-3. Run `npm install` in both `client` and `server` directories
-4. Start the backend: `cd server && node server.js`
-5. Start the frontend: `cd client && npm start`
-6. Navigate to `http://localhost:3000/`
+3. Copy `server/example.env` to `server/.env` and fill in your DB credentials and a `JWT_SECRET` (any long random string)
+4. Run `npm install` in both `client` and `server` directories
+5. Start the backend: `cd server && npm run dev`
+6. Start the frontend: `cd client && npm start`
+7. Navigate to `http://localhost:3000/`
+
+### Running Tests
+
+```
+cd server && npx jest
+```
 
 ## Contributors
 
