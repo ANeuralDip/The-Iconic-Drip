@@ -11,17 +11,19 @@
 }
 
 .carousel {
-	width: min-content;
-	height: auto;
-	margin: auto;
-	margin-bottom: 20px;
+	width: 420px;          
+    height: 500px;         
+    margin: 0 auto 20px;   
+    border: 0.3rem solid aqua; 
+    box-sizing: border-box;
+    background-color: #f9f9f9;
 }
 
-#card-image{
-	border: 3px solid aqua;
-	width: 700px;
-	height: 500px;
-	margin: auto;
+.card-image{
+width: 100%;            
+    height: 100%;           
+    object-fit: contain;    
+    display: block;
 }
 
 .carousel-caption{

@@ -29,31 +29,20 @@ function Homepage(){
 	function Slides(type){//function that creates a carousel for each state received using props
 		function renderItems(type){
 			//mapping the state and returning the images
-			return type.map(item =>
-			<img id="card-image" src={`http://localhost:8080/${item.item_id}.jpg`} alt={item.item_name} />
+			return type.map(item => (
+                <img
+                    key = {item.item_id}
+                    className="card-image"
+                    src={`http://localhost:8080/${item.item_id}.jpg`}
+                    alt={item.item_name} />
+            )
 		)}; 
 		return (
             // carousel component from @material-ui with attributes
             <Carousel     
-                navButtonsAlwaysVisible = "true"
-                navButtonsProps={{
-                    style: {
-                        backgroundColor: 'aqua',
-                        borderRadius: 0
-                    },
-                }}
-                indicatorIconButtonProps={{
-                    style: {
-                        padding: '10px',
-                        color: 'aqua'  
-                    }
-                }}
-                activeIndicatorIconButtonProps={{
-                    style: {
-                        color: "white",
-                        backgroundColor: 'aqua'
-                    }
-                }} className="carousel">
+                navButtonsAlwaysInvisible={true}
+                indicators={false}
+                className="carousel">
                 {/* call to the mapping function */}
                 {renderItems(type)}
             </Carousel>
