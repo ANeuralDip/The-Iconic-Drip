@@ -11,3 +11,4 @@ client/build/
 .env
 client/.env
 server/.env
+server/.vscode/launch.json
