@@ -8,6 +8,12 @@ require('dotenv').config();
 const itemsRouter = require('./routes/items');
 const customerRouter = require('./routes/customers');
 const basketRouter = require('./routes/baskets');
+
+app.use(cors(
+    {origin: 'http://localhost:3000'}
+));
+
+
 //use the items router for all routes starting with /items
 app.use('/items', itemsRouter);
 
@@ -19,7 +25,7 @@ app.use('/basket', basketRouter);
 
 
 
-app.use(cors());
+
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
