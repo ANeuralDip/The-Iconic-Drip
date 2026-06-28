@@ -8,11 +8,17 @@ require('dotenv').config();
 const itemsRouter = require('./routes/items');
 const customerRouter = require('./routes/customers');
 const basketRouter = require('./routes/baskets');
+const authRouter = require('./routes/auth');
+
 
 app.use(cors(
     {origin: 'http://localhost:3000'}
 ));
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
+app.use(authRouter);
 
 //use the items router for all routes starting with /items
 app.use('/items', itemsRouter);
@@ -26,9 +32,7 @@ app.use('/basket', basketRouter);
 
 
 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+
 // Start server
 app.listen(process.env.PORT, () => {
     console.log("Server running on port %PORT%".replace("%PORT%", process.env.PORT))
@@ -58,3 +62,10 @@ app.get("/search/:type" , async (req, res, next) => {
         rows
     )
 })
+
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Something went wrong' });
+});
+
+module.exports = app;
