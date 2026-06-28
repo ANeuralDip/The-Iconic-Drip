@@ -8,8 +8,16 @@ export const api = axios.create({
 export const getItems = async (type, gender) => {
     var typeQuery = type ? `type=${type}` : '';
     var genderQuery = gender ? `category=${gender}` : '';
+    var query = '';
+    if (typeQuery && genderQuery) {
+        query = `${typeQuery}&${genderQuery}`;
+    } else if (typeQuery && !genderQuery) {
+        query = typeQuery;
+    } else if (!typeQuery && genderQuery) {
+        query = genderQuery;
+    }
     try{
-        const response = await api.get(`/items?${genderQuery}&${typeQuery}`);//perform the get request, gathering all the database values
+        const response = await api.get(`/items?${query}`);//perform the get request, gathering all the database values
         let data = response.data;
         return data;
     } catch (err) {
